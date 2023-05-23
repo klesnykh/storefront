@@ -1,5 +1,3 @@
-'use strict';
-
 import categoryReducer from './categories';
 import productsReducer from './products';
 
