@@ -1,5 +1,7 @@
 # Virtual Store
 
+[Deployed Site](https://main--glittery-longma-8db8d9.netlify.app/)
+
 [UML](./virtual-store.png)
 
 This application is meant to eventually take in an api of products that have categories and print the products from that api as well as the categories onto the screen.
