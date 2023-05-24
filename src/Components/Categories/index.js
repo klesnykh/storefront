@@ -1,13 +1,13 @@
 import { useSelector, useDispatch } from 'react-redux';
 import Products from './Products';
 import Button from '@mui/material/Button';
+import { useEffect } from 'react';
+import { fetchProducts } from '../../store/middleware/fetchproducts';
 
 function Categories (){
 
   let categories = useSelector(currentState => currentState.category.categories);
-  let categoryState = useSelector(currentState => currentState.category);
   const dispatch = useDispatch();
-  console.log(categoryState);
 
 
   let categoriesToScreen = categories.map((category, idx) => {
@@ -22,6 +22,11 @@ function Categories (){
       payload: category,
     });
   }
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return(
     <>
