@@ -4,6 +4,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import List from '@mui/material/List';
 import Box from '@mui/material/Box';
 import ListItemText from '@mui/material/ListItemText';
+import { fetchRemoveFromCart } from '../../store/middleware/removeFromCart';
 
 
 function Header() {
@@ -23,11 +24,7 @@ function Header() {
   })
 
   function removeCartItem(product) {
-    console.log('REMOVE CART ITEM');
-    dispatch({
-      type: 'REMOVE_FROM_CART',
-      payload: product
-    });
+    dispatch(fetchRemoveFromCart(product));
   }
 
 

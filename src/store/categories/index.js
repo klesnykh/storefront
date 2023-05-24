@@ -1,5 +1,5 @@
 const initialState = {
-  categories: ['VOLLEYBALL', 'SOCCER'],
+  categories: [],
   activeCategory: null,
 };
 
@@ -21,6 +21,18 @@ function categoryReducer(state = initialState, action) {
       ...state,
       activeCategory: action.payload,
     };
+    case 'FETCH_PRODUCTS':
+      let products = action.payload;
+      let cats = {};
+      products.forEach(product => {
+        if(!cats[product.category]){
+          cats[product.category] = 1;
+        }
+      });
+      let allCategories = Object.keys(cats);
+      return {
+        categories: allCategories,
+      }
   default: return state;
   }
 }
