@@ -6,6 +6,7 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { fetchAddToCart } from '../../../store/middleware/addToCart';
+import BasicModal from './ProductDetails';
 
 function Products (){
   let allProducts = useSelector(currentState => currentState.products.products);
@@ -23,10 +24,6 @@ function Products (){
   function addToCart (product){
     dispatch(fetchAddToCart(product));
   }
-
-  function openModal(product){
-    console.log('MODAL SHOULD OPEN HERE:', product.name);
-  }
   
   let productsToScreen = products.map((product, idx) => {
     return(
@@ -37,7 +34,7 @@ function Products (){
         <CardContent>{product.description}</CardContent>
         <CardContent>${product.price}</CardContent>
         <CardContent>In Stock: {product.inStock}</CardContent>
-        <Button variant="outlined" onClick={()=>openModal(product)}>VIEW DESCRIPTION</Button>
+        <BasicModal product={product}/>
         {product.inStock>0&&<Button variant="outlined" onClick={()=>addToCart(product)}>ADD TO CART</Button>}
       </Card>
     );
